@@ -5,13 +5,21 @@
   align-items: center;
 }
 
-#header #login {
+#header button {
   padding: 0.5em 1em;
 
+  font-size: 1.2em;
   background-color: white;
   border: 1px solid #999;
 }
 
-#header #login:hover {
+#header button:hover {
   cursor: pointer;
+}
+
+#header #login.is-login {
+  background-color: #eee;
+}
+
+#header #post.is-login {
 }

@@ -1,0 +1,36 @@
+#login-page {
+  display: flex;
+  align-items: center;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+#login-page:hover {
+  cursor: pointer;
+}
+
+.login-panel {
+  margin: 0 auto;
+  padding: 2em;
+  background-color: white;
+}
+
+.login-panel:hover {
+  cursor: default;
+}
+
+#login-page label,
+#login-page input {
+  display: block;
+  margin: 0.3em;
+}
+
+#login-page h2 {
+  text-align: center;
+}
