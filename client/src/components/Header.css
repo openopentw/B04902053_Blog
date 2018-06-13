@@ -1,0 +1,17 @@
+#header {
+  display: flex;
+  margin: 0 1em;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#header #login {
+  padding: 0.5em 1em;
+
+  background-color: white;
+  border: 1px solid #999;
+}
+
+#header #login:hover {
+  cursor: pointer;
+}
