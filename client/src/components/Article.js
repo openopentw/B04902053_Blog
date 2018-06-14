@@ -14,7 +14,7 @@ class Article extends Component {
           {article.title}
         </h2>
         <div className="author">
-          Written by: {article.author}
+          written by: {article.author}
         </div>
         <div className="img">
           <img

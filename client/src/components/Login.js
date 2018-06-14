@@ -20,7 +20,7 @@ class Login extends Component {
             <input type="text" name="username" />
             <label>password</label>
             <input type="password" name="password" />
-            <input type="submit" />
+            <button type="submit">Login</button>
           </form>
         </div>
       </div>) : ''

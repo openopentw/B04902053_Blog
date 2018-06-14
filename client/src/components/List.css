@@ -1,30 +1,41 @@
+#list {
+  display: flex;
+  /* justify-content: center; */
+
+  background-color: #ddd;
+}
+
 #list .ul {
   display: flex;
   padding: 0.5em 0;
   overflow-x: auto;
-
-  background-color: #ddd;
 }
 
 #list button {
   margin: 0 0.5em;
   padding: 0;
-  /* min-width: 30%; */
-  min-width: 13em;
+  max-width: 15em;
+  min-width: 12em;
 
   border: none;
   border: 1px solid #bbb;
-  border-radius: 0.5em;
   background-color: white;
+
+  transition: filter 0.3s;
 }
 
 #list button:hover {
   cursor: pointer;
+
+  filter: brightness(1.2);
+}
+
+#list button:active {
+  filter: brightness(1.4);
 }
 
 #list img {
   max-width: 100%;
-  border-radius: 0.5em 0.5em 0 0;
 }
 
 #list .desc {

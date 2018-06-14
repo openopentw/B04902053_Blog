@@ -8,7 +8,7 @@
   bottom: 0;
   left: 0;
 
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 #login-page:hover {
@@ -17,7 +17,8 @@
 
 .login-panel {
   margin: 0 auto;
-  padding: 2em;
+  padding: 1em 2em;
+
   background-color: white;
 }
 
@@ -25,12 +26,56 @@
   cursor: default;
 }
 
-#login-page label,
-#login-page input {
-  display: block;
-  margin: 0.3em;
-}
-
 #login-page h2 {
   text-align: center;
+  margin-bottom: 1.2em;
+}
+
+#login-page label,
+#login-page input,
+#login-page button {
+  display: block;
+  margin: 1em 0.5em;
+}
+
+#login-page label {
+  margin-bottom: 0.2em;
+
+  color: #888;
+}
+
+#login-page input {
+  margin-top: 0.2em;
+  padding: 0.5em 0;
+
+  box-shadow: none;
+  border: 1px solid #aaa;
+  border-width: 0 0 1px 0;
+  outline: none;
+
+  transition: border-color 0.3s;
+}
+
+#login-page input:hover {
+  border-color: #444;
+}
+
+#login-page button {
+  margin: 2em auto 0.5em auto;
+  padding: 0.5em 1em;
+
+  background-color: #eee;
+  border: 1px solid #999;
+
+  transition: background-color 0.3s;
+}
+
+#login-page button:hover {
+  cursor: pointer;
+
+  background-color: #ddd;
+}
+
+#login-page button:active {
+  background-color: #bbb;
 }
