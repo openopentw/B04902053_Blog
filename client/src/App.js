@@ -14,6 +14,7 @@ class App extends Component {
     this.state = {
       list: [],
       article: {
+        id: 0,
         title: '',
         author: '',
         img: '',
@@ -43,6 +44,11 @@ class App extends Component {
     this.setState({
       article: res
     })
+  }
+
+  clickListArt (e) {
+    const id = parseInt(e.target.dataset.id, 10)
+    this.getArticle(id)
   }
 
   loginClick () {
@@ -138,6 +144,7 @@ class App extends Component {
 
     // login
     if (res) {
+      // TODO
       console.log('Success !')
     } else {
       console.log('Fail QQ')
@@ -161,6 +168,7 @@ class App extends Component {
         />
         <List
           list={this.state.list}
+          clickListArt={this.clickListArt.bind(this)}
         />
         <Article
           article={this.state.article}

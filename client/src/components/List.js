@@ -5,7 +5,7 @@ import './List.css'
 
 class List extends Component {
   render() {
-    const { list } = this.props
+    const { list, clickListArt } = this.props
     return (
       <div
         id="list"
@@ -13,9 +13,11 @@ class List extends Component {
         <div
           className="ul"
         >
-          {list.map((li, id) =>
+          {list.map(li =>
             <button
-              key={id}
+              key={li.id}
+              data-id={li.id}
+              onClick={clickListArt}
             >
               <img
                 src={li.img}
@@ -39,6 +41,7 @@ class List extends Component {
 
 List.propTypes = {
   list: PropTypes.array,
+  clickListArt: PropTypes.func,
 }
 
 export default List
