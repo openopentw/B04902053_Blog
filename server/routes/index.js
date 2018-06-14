@@ -1,13 +1,14 @@
-var express = require('express')
+const express = require('express')
+const bcrypt = require('bcrypt')
+
 var router = express.Router()
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' })
 })
 
 const username = 'abc123'
-const password = '123abc'
+const hashedPassword = '$2b$10$tyP4Hlsg2ZdPOt.XJht1DeR8WeIlRxTy4l/lah0/yF/swcwcIRqGG'
 
 let list = [
   {
@@ -69,27 +70,32 @@ let article = [
   },
 ]
 
-router.get('/list', function(req, res, next) {
+router.get('/list', function (req, res, next) {
   res.json(list);
 });
 
-router.get('/article/:artId', function(req, res, next) {
+router.get('/article/:artId', function (req, res, next) {
   const artId = parseInt(req.params.artId, 10)
   res.json(article[artId]);
 });
 
-router.post('/login', function(req, res, next) {
+router.post('/login', async function (req, res, next) {
   const getUsername = req.body.username
   const getPassword = req.body.password
 
-  if (username === getUsername && password == getPassword) {
-    res.json(true)
+  if (username === getUsername) {
+    const match = await bcrypt.compare(getPassword, hashedPassword)
+    if (match) {
+      res.json(true)
+    } else {
+      res.json(false)
+    }
   } else {
     res.json(false)
   }
 })
 
-router.post('/post-essay', function(req, res, next) {
+router.post('/post-essay', async function (req, res, next) {
   const title = req.body.title
   const author = req.body.author
   const img = req.body.img
@@ -97,13 +103,19 @@ router.post('/post-essay', function(req, res, next) {
   const getUsername = req.body.username
   const getPassword = req.body.password
 
-  if (username === getUsername && password == getPassword) {
+  if (username === getUsername) {
+    const match = await bcrypt.compare(getPassword, hashedPassword)
     // TODO:
-    console.log(title)
-    console.log(author)
-    console.log(img)
-    console.log(content)
-    res.json(true)
+    //
+    if (match) {
+      console.log(title)
+      console.log(author)
+      console.log(img)
+      console.log(content)
+      res.json(true)
+    } else {
+      res.json(false)
+    }
   } else {
     res.json(false)
   }
