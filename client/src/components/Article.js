@@ -37,7 +37,7 @@ class Article extends Component {
 }
 
 Article.propTypes = {
-  article: PropTypes.array,
+  article: PropTypes.object,
 }
 
 export default Article

@@ -11,7 +11,7 @@ class Login extends Component {
         id="login-page"
         onClick={unLoginClick}
       >
-        <div class="login-panel">
+        <div className="login-panel">
           <h2>LOGIN</h2>
           <form
             onSubmit={ postUserPass }

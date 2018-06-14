@@ -13,29 +13,29 @@ let list = [
   {
     title: 'art #1',
     author: 'auth #1',
-    img: 'http://nysurfsoccer.org/wp-content/uploads/2017/03/IMG.png',
+    img: './IMG.png',
   },
   {
     title: 'art #2',
     author: 'auth #2',
-    img: 'http://nysurfsoccer.org/wp-content/uploads/2017/03/IMG.png',
+    img: './IMG.png',
   },
   {
     title: 'art #3',
     author: 'auth #3',
-    img: 'http://nysurfsoccer.org/wp-content/uploads/2017/03/IMG.png',
+    img: './IMG.png',
   },
   {
     title: 'art #4',
     author: 'auth #4',
-    img: 'http://nysurfsoccer.org/wp-content/uploads/2017/03/IMG.png',
+    img: './IMG.png',
   },
 ]
 
 let article = {
   title: 'art #0',
   author: 'auth #0',
-  img: 'http://nysurfsoccer.org/wp-content/uploads/2017/03/IMG.png',
+  img: './IMG.png',
   content: [
     'aaaaaaaa',
     'bbbbbbbb',
@@ -52,7 +52,7 @@ router.get('/list', function(req, res, next) {
 });
 
 router.get('/article/:artId', function(req, res, next) {
-  const artId = parseInt(req.params.artId, 10)
+  // const artId = parseInt(req.params.artId, 10)
   res.json(article);
 });
 
@@ -61,6 +61,26 @@ router.post('/login', function(req, res, next) {
   const getPassword = req.body.password
 
   if (username === getUsername && password == getPassword) {
+    res.json(true)
+  } else {
+    res.json(false)
+  }
+})
+
+router.post('/post-essay', function(req, res, next) {
+  const title = req.body.title
+  const author = req.body.author
+  const img = req.body.img
+  const content = req.body.content
+  const getUsername = req.body.username
+  const getPassword = req.body.password
+
+  if (username === getUsername && password == getPassword) {
+    // TODO:
+    console.log(title)
+    console.log(author)
+    console.log(img)
+    console.log(content)
     res.json(true)
   } else {
     res.json(false)

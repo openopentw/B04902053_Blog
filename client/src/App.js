@@ -6,6 +6,7 @@ import Header from './components/Header.js'
 import List from './components/List.js'
 import Article from './components/Article.js'
 import Login from './components/Login.js'
+import PostEssay from './components/PostEssay.js'
 
 class App extends Component {
   constructor (props) {
@@ -24,6 +25,7 @@ class App extends Component {
         username: '',
         password: '',
       },
+      wantPost: false,
     }
   }
 
@@ -83,10 +85,62 @@ class App extends Component {
     res = await res.json()
 
     // login
+    const newLoginInfo = {
+      username: username,
+      password: password,
+    }
+
     if (res) {
-	  this.setState({
-		isLogin: !this.state.isLogin,
-	  })
+      this.setState({
+        isLogin: !this.state.isLogin,
+        loginInfo: newLoginInfo,
+      })
+    }
+  }
+
+  postClick (e) {
+    this.setState({
+      wantPost: true
+    })
+  }
+
+  unPostClick (e) {
+    if (e.target === document.getElementById('post-essay')) {
+      this.setState({
+        wantPost: false,
+      })
+    }
+  }
+
+  async postEssay (e) {
+    e.preventDefault()
+
+    const data = new FormData(e.target);
+    let title = data.get('title')
+    let author = data.get('author')
+    let img = data.get('img')
+    let content = data.get('content')
+
+    // submit
+    let res = await fetch('/post-essay', {
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        username: this.state.loginInfo.username,
+        password: this.state.loginInfo.password,
+        title: title,
+        author: author,
+        img: img,
+        content: content,
+      })
+    })
+    res = await res.json()
+
+    // login
+    if (res) {
+      console.log('Success !')
+    } else {
+      console.log('Fail QQ')
     }
   }
 
@@ -102,6 +156,7 @@ class App extends Component {
       >
         <Header
           isLogin={this.state.isLogin}
+          postClick={this.postClick.bind(this)}
           loginClick={this.loginClick.bind(this)}
         />
         <List
@@ -115,6 +170,11 @@ class App extends Component {
           isLogin={this.state.isLogin}
           unLoginClick={this.unLoginClick.bind(this)}
           postUserPass={this.postUserPass.bind(this)}
+        />
+        <PostEssay
+          wantPost={this.state.wantPost}
+          unPostClick={this.unPostClick.bind(this)}
+          postEssay={this.postEssay.bind(this)}
         />
       </div>
     )

@@ -1,0 +1,40 @@
+#post-essay {
+  display: flex;
+  align-items: center;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+#post-essay:hover {
+  cursor: pointer;
+}
+
+.post-essay-panel {
+  margin: 0 auto;
+  padding: 2em;
+  background-color: white;
+}
+
+.post-essay-panel:hover {
+  cursor: default;
+}
+
+#post-essay label,
+#post-essay input {
+  display: block;
+  margin: 0.3em;
+}
+
+#post-essay textarea {
+  resize: none;
+}
+
+#post-essay h2 {
+  text-align: center;
+}

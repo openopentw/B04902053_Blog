@@ -5,7 +5,7 @@ import './Header.css'
 
 class Header extends Component {
   render() {
-    const { isLogin, loginClick } = this.props
+    const { isLogin, postClick, loginClick } = this.props
     return (
       <div
         id="header"
@@ -15,6 +15,7 @@ class Header extends Component {
           { isLogin? (
               <button
                 id="post"
+                onClick={ postClick }
                 className={ isLogin? 'is-login' : 'not-login' }
               >
                 Post a new essay
@@ -23,7 +24,7 @@ class Header extends Component {
           }
           <button
             id="login"
-            onClick={loginClick}
+            onClick={ loginClick }
             className={ isLogin? 'is-login' : 'not-login' }
           >
             { isLogin? 'Logout' : 'Login' }
@@ -35,7 +36,8 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  aisLogin: PropTypes.array,
+  isLogin: PropTypes.bool,
+  postClick: PropTypes.func,
   loginClick: PropTypes.func,
 }
 
