@@ -2,7 +2,16 @@ const express = require('express')
 const path = require('path')
 const bcrypt = require('bcrypt')
 
+const { Client } = require('pg')
+
 var router = express.Router()
+
+const conString = process.env.DATABASE_URL ||  'postgres://jpzgjenyussirv:914a493cfc282545dcaa4abec25f2f6667bcc206b738c51e1796ecc28bc8e154@ec2-23-21-129-50.compute-1.amazonaws.com:5432/d9otaqjdlvrcba'
+const client = new Client({
+  connectionString: conString,
+  ssl: true,
+})
+client.connect()
 
 router.use(express.static(path.join('client/build')));
 
@@ -42,30 +51,14 @@ let article = [
     title: 'art #0',
     author: 'auth #0',
     img: './IMG.png',
-    content: [
-      'aaaaaaaa',
-      'bbbbbbbb',
-      'cccccccc',
-      'dddddddd',
-      'eeeeeeee',
-      'ffffffff',
-      'gggggggg',
-    ],
+    content: 'aaaaaaaa\nbbbbbbb',
   },
   {
     id: 1,
     title: 'art #1',
     author: 'auth #1',
     img: './IMG.png',
-    content: [
-      'hhhhhhhh',
-      'iiiiiiii',
-      'jjjjjjjj',
-      'kkkkkkkk',
-      'llllllll',
-      'mmmmmmmm',
-      'nnnnnnnn',
-    ],
+    content: 'hhhhhhhh\niiiiiiii',
   },
 ]
 

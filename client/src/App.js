@@ -18,7 +18,7 @@ class App extends Component {
         title: '',
         author: '',
         img: '',
-        content: [],
+        content: '',
       },
       wantLogin: false,
       isLogin: false,

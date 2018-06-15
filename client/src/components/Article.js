@@ -23,7 +23,7 @@ class Article extends Component {
           />
         </div>
         <div className="art">
-          {article.content.map((con, id) =>
+          {article.content.split(/\r?\n/).map((con, id) =>
             <p
               key={id}
             >
