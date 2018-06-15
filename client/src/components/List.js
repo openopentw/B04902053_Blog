@@ -6,6 +6,7 @@ import './List.css'
 class List extends Component {
   render() {
     const { list, clickListArt } = this.props
+    console.log(list)
     return (
       <div
         id="list"
