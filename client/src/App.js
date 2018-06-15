@@ -31,7 +31,7 @@ class App extends Component {
   }
 
   async getList () {
-    let res = await fetch('list')
+    let res = await fetch('/api/list')
     res = await res.json()
     this.setState({
       list: res
@@ -39,7 +39,7 @@ class App extends Component {
   }
 
   async getArticle (artId) {
-    let res = await fetch(`article/${artId}`)
+    let res = await fetch(`/api/article/${artId}`)
     res = await res.json()
     this.setState({
       article: res
@@ -80,7 +80,7 @@ class App extends Component {
     let password = data.get('password')
 
     // submit
-    let res = await fetch('/login', {
+    let res = await fetch('/api/login', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -128,7 +128,7 @@ class App extends Component {
     let content = data.get('content')
 
     // submit
-    let res = await fetch('/post-essay', {
+    let res = await fetch('/api/post-essay', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({

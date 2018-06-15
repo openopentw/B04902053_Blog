@@ -1,14 +1,13 @@
 const express = require('express')
+const path = require('path')
 const bcrypt = require('bcrypt')
 
 var router = express.Router()
 
-router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express' })
-})
+router.use(express.static(path.join('client/build')));
 
 const username = 'abc123'
-const hashedPassword = '$2b$10$tyP4Hlsg2ZdPOt.XJht1DeR8WeIlRxTy4l/lah0/yF/swcwcIRqGG'
+const hashedPassword = '$2b$10$1sSpo.bnaIfzQNw5Myh4AOJoujzjqKwn9xXz4RYIpRFu7MWulj9by'
 
 let list = [
   {
@@ -70,16 +69,16 @@ let article = [
   },
 ]
 
-router.get('/list', function (req, res, next) {
+router.get('/api/list', function (req, res, next) {
   res.json(list);
 });
 
-router.get('/article/:artId', function (req, res, next) {
+router.get('/api/article/:artId', function (req, res, next) {
   const artId = parseInt(req.params.artId, 10)
   res.json(article[artId]);
 });
 
-router.post('/login', async function (req, res, next) {
+router.post('/api/login', async function (req, res, next) {
   const getUsername = req.body.username
   const getPassword = req.body.password
 
@@ -95,7 +94,7 @@ router.post('/login', async function (req, res, next) {
   }
 })
 
-router.post('/post-essay', async function (req, res, next) {
+router.post('/api/post-essay', async function (req, res, next) {
   const title = req.body.title
   const author = req.body.author
   const img = req.body.img
