@@ -163,6 +163,7 @@ class App extends Component {
   componentDidMount () {
     this.getList()
     this.getArticle(1)
+    document.title = 'my-blog'
   }
 
   render () {
