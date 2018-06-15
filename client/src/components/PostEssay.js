@@ -21,10 +21,12 @@ class PostEssay extends Component {
             <label>author</label>
             <input type="text" name="author" />
             <label>img address</label>
-            <input type="text" name="img" />
+            <input type="text" name="img" placeholder="default img: ./IMG.png" />
             <label>content</label>
-            <textarea name="content" cols="30" rows="10"></textarea>
-            <input type="submit" />
+            <textarea name="content" cols="50" rows="8"></textarea>
+            <button type="submit">
+              POST!
+            </button>
           </form>
         </div>
       </div>

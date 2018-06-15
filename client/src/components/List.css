@@ -34,9 +34,26 @@
   filter: brightness(1.4);
 }
 
-#list img {
-  max-width: 100%;
+#list .img {
+  height: 8em;
+  width: 100%;
+
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /* overflow: hidden; */
 }
+
+/* #list img { */
+/*   /1* position: relative; *1/ */
+/*   /1* top: 50%; *1/ */
+/*   /1* transform: translateY(-50%); *1/ */
+
+/*   /1* max-height: 100%; *1/ */
+/*   /1* max-width: 100%; *1/ */
+
+/* } */
 
 #list .desc {
   padding: 0 1em 0.5em 1em;

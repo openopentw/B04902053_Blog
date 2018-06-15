@@ -16,25 +16,86 @@
 }
 
 .post-essay-panel {
-  margin: 0 auto;
-  padding: 2em;
+  margin: 1em auto;
+  padding: 1em 2em;
   background-color: white;
+
+  max-height: 90%;
+
+  overflow: auto;
 }
 
 .post-essay-panel:hover {
   cursor: default;
 }
 
+#post-essay h2 {
+  text-align: center;
+  margin-bottom: 2em;
+}
+
 #post-essay label,
-#post-essay input {
+#post-essay input,
+#post-essay button {
   display: block;
-  margin: 0.3em;
+  margin: 1em 0.5em;
+}
+
+#post-essay label {
+  margin-bottom: 0.2em;
+
+  color: #888;
+}
+
+#post-essay textarea,
+#post-essay input {
+  margin-top: 0.2em;
+  padding: 0.5em 0;
+
+  box-shadow: none;
+  border: 1px solid #aaa;
+  outline: none;
+
+  transition: border-color 0.3s;
+}
+
+#post-essay textarea:hover,
+#post-essay input:hover {
+  border-color: #444;
 }
 
 #post-essay textarea {
+  padding: 1em;
   resize: none;
+
+  font-family: inherit;
 }
 
-#post-essay h2 {
-  text-align: center;
+#post-essay input {
+  width: 15em;
+  border-width: 0 0 1px 0;
+}
+
+#post-essay input::placeholder {
+  color: #999;
+}
+
+#post-essay button {
+  margin: 2em auto;
+  padding: 0.5em 1em;
+
+  background-color: #eee;
+  border: 1px solid #999;
+
+  transition: background-color 0.3s;
+}
+
+#post-essay button:hover {
+  cursor: pointer;
+
+  background-color: #ddd;
+}
+
+#post-essay button:active {
+  background-color: #bbb;
 }

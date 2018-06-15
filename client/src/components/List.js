@@ -6,7 +6,6 @@ import './List.css'
 class List extends Component {
   render() {
     const { list, clickListArt } = this.props
-    console.log(list)
     return (
       <div
         id="list"
@@ -20,10 +19,13 @@ class List extends Component {
               data-id={li.article_id}
               onClick={clickListArt}
             >
-              <img
-                src={li.article_img}
-                alt={`cover of ${li.article_title}`}
-              />
+              <div
+                className="img"
+                style={{
+                  backgroundImage: `url("${li.article_img}")`,
+                }}
+              >
+              </div>
               <div className="desc">
                 <div className="title">
                   {li.article_title}

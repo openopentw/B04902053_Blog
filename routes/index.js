@@ -20,16 +20,20 @@ const username = 'abc123'
 const hashedPassword = '$2b$10$1sSpo.bnaIfzQNw5Myh4AOJoujzjqKwn9xXz4RYIpRFu7MWulj9by'
 
 router.get('/api/list', function (req, res, next) {
-  client.query('SELECT article_id, article_title, article_author, article_img FROM article;', (err, data) => {
-    if (err) throw err;
+  client.query('SELECT article_id, article_title, article_author, article_img FROM article ORDER BY article_id DESC;', (err, data) => {
+    if (err) {
+      res.json([])
+    }
     res.json(data.rows)
   })
 });
 
 router.get('/api/article/:artId', function (req, res, next) {
   let artId = parseInt(req.params.artId, 10)
-  client.query(`SELECT * FROM article WHERE article_id = ${artId.toString()}`, (err, data) => {
-    if (err) throw err;
+  client.query('SELECT * FROM article WHERE article_id = $1;', [artId], (err, data) => {
+    if (err) {
+      res.json({})
+    }
     res.json(data.rows[0])
   })
 });
@@ -53,21 +57,29 @@ router.post('/api/login', async function (req, res, next) {
 router.post('/api/post-essay', async function (req, res, next) {
   const title = req.body.title
   const author = req.body.author
-  const img = req.body.img
+  let img = req.body.img
   const content = req.body.content
   const getUsername = req.body.username
   const getPassword = req.body.password
 
-  if (username === getUsername) {
-    const match = await bcrypt.compare(getPassword, hashedPassword)
-    // TODO:
-    //
-    if (match) {
-      console.log(title)
-      console.log(author)
-      console.log(img)
-      console.log(content)
-      res.json(true)
+  if (title && author && content) {
+    if (username === getUsername) {
+      const match = await bcrypt.compare(getPassword, hashedPassword)
+      if (match) {
+        img = img? img : './IMG.png'
+        client.query('INSERT INTO article VALUES ($1, $2, $3, $4)', [title, author, img, content], (err, data) => {
+          if (err) {
+            res.json(false)
+          }
+          if (data.rowCount) {
+            res.json(true)
+          } else {
+            res.json(false)
+          }
+        })
+      } else {
+        res.json(false)
+      }
     } else {
       res.json(false)
     }

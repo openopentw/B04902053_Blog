@@ -15,10 +15,10 @@ class App extends Component {
       list: [],
       article: {
         article_id: 0,
-        article_title: 'a',
-        article_author: 'a',
-        article_img: 'a',
-        article_content: 'a',
+        article_title: '',
+        article_author: '',
+        article_img: '',
+        article_content: '',
       },
       wantLogin: false,
       isLogin: false,
@@ -32,7 +32,6 @@ class App extends Component {
 
   async getList () {
     let res = await fetch('/api/list')
-    console.log(res)
     res = await res.json()
     this.setState({
       list: res
@@ -41,7 +40,6 @@ class App extends Component {
 
   async getArticle (artId) {
     let res = await fetch(`/api/article/${artId}`)
-    console.log(res)
     res = await res.json()
     this.setState({
       article: res
@@ -104,6 +102,10 @@ class App extends Component {
         loginInfo: newLoginInfo,
       })
     }
+
+    this.setState({
+      wantLogin: false,
+    })
   }
 
   postClick (e) {
@@ -146,19 +148,30 @@ class App extends Component {
 
     // login
     if (res) {
-      // TODO
-      console.log('Success !')
+      alert('Success !')
     } else {
-      console.log('Fail QQ')
+      alert('Fail QQ')
     }
+
+    this.setState({
+      wantPost: false,
+    })
+
+    this.getList()
   }
 
   componentDidMount () {
     this.getList()
-    this.getArticle(0)
+    this.getArticle(1)
   }
 
   render () {
+    if (this.state.wantLogin || this.state.wantPost) {
+      document.body.className = 'overflow-hidden'
+    } else {
+      document.body.className = ''
+    }
+
     return (
       <div
         id="app-root"
