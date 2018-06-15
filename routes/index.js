@@ -13,7 +13,7 @@ const client = new Client({
 })
 client.connect()
 
-// router.use(express.static(path.join('client/build')));
+router.use(express.static(path.join('client/build')));
 
 const username = 'abc123'
 const hashedPassword = '$2b$10$1sSpo.bnaIfzQNw5Myh4AOJoujzjqKwn9xXz4RYIpRFu7MWulj9by'
