@@ -1,4 +1,4 @@
-# B04902053_Blog
+# B04902053\_Blog
 
 A blog.
 
@@ -18,7 +18,7 @@ Demo page: [https://b04902053-blog.herokuapp.com/](https://b04902053-blog.heroku
   npm install -g node-gyp
   ```
 
-  ( On different platform, there will be more dependencies to install. Check them at: <https://github.com/nodejs/node-gyp> )
+  ( On different platform, there will be more dependencies to install. Check them at: <https://github.com/nodejs/node-gyp#installation> )
 
 - Install modules for express.
 
