@@ -29,5 +29,10 @@
   background-color: #eee;
 }
 
-#header #post.is-login {
+#header #login.is-login:hover {
+  background-color: #ccc;
+}
+
+#header #login.is-login:active {
+  background-color: #999;
 }
