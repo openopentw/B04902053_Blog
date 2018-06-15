@@ -7,8 +7,6 @@ class Article extends Component {
   render() {
     const { article } = this.props
     const content_list = article.article_content.split(/\r?\n/)
-    console.log(article)
-    console.log(article.article_img)
     return (
       <div
         id="article"

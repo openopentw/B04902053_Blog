@@ -15,14 +15,14 @@ class App extends Component {
       list: [],
       article: {
         article_id: 0,
-        article_title: '',
-        article_author: '',
-        article_img: '',
+        article_title: 'a',
+        article_author: 'a',
+        article_img: 'a',
         article_content: 'a',
       },
       wantLogin: false,
       isLogin: false,
-      loginInfo: { // TODO
+      loginInfo: {
         username: '',
         password: '',
       },
@@ -32,6 +32,7 @@ class App extends Component {
 
   async getList () {
     let res = await fetch('/api/list')
+    console.log(res)
     res = await res.json()
     this.setState({
       list: res
