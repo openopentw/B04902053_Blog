@@ -6,24 +6,27 @@ import './Article.css'
 class Article extends Component {
   render() {
     const { article } = this.props
+    const content_list = article.article_content.split(/\r?\n/)
+    console.log(article)
+    console.log(article.article_img)
     return (
       <div
         id="article"
       >
         <h2>
-          {article.title}
+          {article.article_title}
         </h2>
         <div className="author">
-          written by: {article.author}
+          written by: {article.article_author}
         </div>
         <div className="img">
           <img
-            src={article.img}
-            alt={`cover img of ${article.title}`}
+            src={article.article_img}
+            alt={`cover img of ${article.article_title}`}
           />
         </div>
         <div className="art">
-          {article.content.split(/\r?\n/).map((con, id) =>
+          {content_list.map((con, id) =>
             <p
               key={id}
             >

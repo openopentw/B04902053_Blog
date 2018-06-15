@@ -15,20 +15,20 @@ class List extends Component {
         >
           {list.map(li =>
             <button
-              key={li.id}
-              data-id={li.id}
+              key={li.article_id}
+              data-id={li.article_id}
               onClick={clickListArt}
             >
               <img
-                src={li.img}
-                alt={`cover of ${li.title}`}
+                src={li.article_img}
+                alt={`cover of ${li.article_title}`}
               />
               <div className="desc">
                 <div className="title">
-                  {li.title}
+                  {li.article_title}
                 </div>
                 <div className="author">
-                  {li.author}
+                  {li.article_author}
                 </div>
               </div>
             </button>

@@ -14,11 +14,11 @@ class App extends Component {
     this.state = {
       list: [],
       article: {
-        id: 0,
-        title: '',
-        author: '',
-        img: '',
-        content: '',
+        article_id: 0,
+        article_title: '',
+        article_author: '',
+        article_img: '',
+        article_content: 'a',
       },
       wantLogin: false,
       isLogin: false,
@@ -40,6 +40,7 @@ class App extends Component {
 
   async getArticle (artId) {
     let res = await fetch(`/api/article/${artId}`)
+    console.log(res)
     res = await res.json()
     this.setState({
       article: res

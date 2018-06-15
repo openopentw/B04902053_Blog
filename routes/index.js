@@ -6,14 +6,14 @@ const { Client } = require('pg')
 
 var router = express.Router()
 
-const conString = process.env.DATABASE_URL ||  'postgres://jpzgjenyussirv:914a493cfc282545dcaa4abec25f2f6667bcc206b738c51e1796ecc28bc8e154@ec2-23-21-129-50.compute-1.amazonaws.com:5432/d9otaqjdlvrcba'
+const conString = process.env.DATABASE_URL ||  'postgres://enussiwuhbsfdo:a06702ef7957e18d1d78d63787f4fe0b16de316275c7797dd2ac507b32b6ebb2@ec2-23-23-130-158.compute-1.amazonaws.com:5432/d2nferslotrmvn'
 const client = new Client({
   connectionString: conString,
   ssl: true,
 })
 client.connect()
 
-router.use(express.static(path.join('client/build')));
+// router.use(express.static(path.join('client/build')));
 
 const username = 'abc123'
 const hashedPassword = '$2b$10$1sSpo.bnaIfzQNw5Myh4AOJoujzjqKwn9xXz4RYIpRFu7MWulj9by'
@@ -63,12 +63,38 @@ let article = [
 ]
 
 router.get('/api/list', function (req, res, next) {
-  res.json(list);
+  // res.json(list);
+
+
+  client.query('SELECT article_id, article_title, article_author, article_img FROM article;', (err, data) => {
+    if (err) throw err;
+
+    for (let row of data.rows) {
+      console.log(JSON.stringify(row))
+    }
+
+    res.json(data.rows)
+    client.end()
+  })
+
 });
 
 router.get('/api/article/:artId', function (req, res, next) {
   const artId = parseInt(req.params.artId, 10)
-  res.json(article[artId]);
+  console.log('artcie id: ' + artId)
+
+  client.query('SELECT * FROM article WHERE article_id = $1;', [artId], (err, data) => {
+    if (err) throw err;
+
+    for (let row of data.rows) {
+      console.log(JSON.stringify(row))
+    }
+
+    res.json(data.rows[0])
+    client.end()
+  })
+
+  // res.json(article[artId]);
 });
 
 router.post('/api/login', async function (req, res, next) {
